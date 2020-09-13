@@ -1,0 +1,28 @@
+{
+  "name": "globus_management_backend",
+  "version": "1.0.0",
+  "description": "backend for globus hospital management software",
+  "main": "src/run.js",
+  "scripts": {
+    "start": "set DEBUG= & set FORCE_DB_RESET= & node src/run.js",
+    "start:debug": "set DEBUG=app:* & node src/run.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Laytoder/GLOBUS_MANAGEMENT_BACKEND.git"
+  },
+  "author": "Lakshya Gupta",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Laytoder/GLOBUS_MANAGEMENT_BACKEND/issues"
+  },
+  "homepage": "https://github.com/Laytoder/GLOBUS_MANAGEMENT_BACKEND#readme",
+  "dependencies": {
+    "collections": "^5.1.11",
+    "express": "^4.17.1",
+    "mongodb": "^3.6.2"
+  },
+  "devDependencies": {
+    "debug": "^4.1.1"
+  }
+}
