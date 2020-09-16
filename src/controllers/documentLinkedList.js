@@ -8,23 +8,23 @@ async function addDocumentToPatient(patient, doc) {
 
     if (patient == null) {
         log('Adding document to patient: patient value is null')
-        return
+        throw 'Adding document to patient: patient value is null'
     }
     if (patient.getName() == null) {
         log('Adding document to patient: patient not created(name does not exist)')
-        return
+        throw 'Adding document to patient: patient not created(name does not exist)'
     }
     if (patient.getBedId() == null) {
         log('Adding document to patient: patient not created(name does not exist)')
-        return
+        throw 'Adding document to patient: patient not created(name does not exist)'
     }
     if (patient.getId() == null) {
         log('Adding document to patient: patient not created(id does not exist)')
-        return
+        throw 'Adding document to patient: patient not created(id does not exist)'
     }
     if (doc == null) {
         log('Adding document to patient: doc value is null')
-        return
+        throw 'Adding document to patient: doc value is null'
     }
 
     const docList = new DocumentLinkedList(patient)
@@ -33,7 +33,7 @@ async function addDocumentToPatient(patient, doc) {
         await docList.add(doc)
     } catch (e) {
         log(e)
-        return
+        throw e
     }
 
     log('Document added to patient')
@@ -41,14 +41,14 @@ async function addDocumentToPatient(patient, doc) {
 
 async function addDocToPatientById(id, doc) {
 
-    if(id == null) {
+    if (id == null) {
         log('Adding document to patient by id: id value is null')
-        return
+        throw 'Adding document to patient by id: id value is null'
     }
 
-    if(doc == null) {
+    if (doc == null) {
         log('Adding document to patient by id: doc value is null')
-        return
+        throw 'Adding document to patient by id: doc value is null'
     }
 
     const patient = await patientController.getPatientById(id)
@@ -59,23 +59,23 @@ async function updatePatientCurrentDocument(patient, change) {
 
     if (patient == null) {
         log('Updating Patient Current Document: patient value is null')
-        return
+        throw 'Updating Patient Current Document: patient value is null'
     }
     if (patient.getName() == null) {
         log('Updating Patient Current Document: patient not created(name does not exist)')
-        return
+        throw 'Updating Patient Current Document: patient not created(name does not exist)'
     }
     if (patient.getBedId() == null) {
         log('Updating Patient Current Document: patient not created(name does not exist)')
-        return
+        throw 'Updating Patient Current Document: patient not created(name does not exist)'
     }
     if (patient.getId() == null) {
         log('Updating Patient Current Document: patient not created(id does not exist)')
-        return
+        throw 'Updating Patient Current Document: patient not created(id does not exist)'
     }
     if (change == null) {
         log('Updating Patient Current Document: change value is null');
-        return
+        throw 'Updating Patient Current Document: change value is null'
     }
 
     const docList = new DocumentLinkedList(patient)
@@ -84,7 +84,7 @@ async function updatePatientCurrentDocument(patient, change) {
         await docList.updateCurrentDocument(change)
     } catch (e) {
         log(e)
-        return
+        throw e
     }
 
     log('Successfully updated patient current document')
@@ -92,14 +92,14 @@ async function updatePatientCurrentDocument(patient, change) {
 
 async function updatePatientCurrentDocById(id, change) {
 
-    if(id == null) {
+    if (id == null) {
         log('Updating Patient Current Document by id: id value is null')
-        return
+        throw 'Updating Patient Current Document by id: id value is null'
     }
 
-    if(change == null) {
+    if (change == null) {
         log('Updating Patient Current Document by id: change value is null')
-        return
+        throw 'Updating Patient Current Document by id: change value is null'
     }
 
     const patient = await patientController.getPatientById(id)
@@ -110,19 +110,19 @@ async function getPatientCurrentDocument(patient) {
 
     if (patient == null) {
         log('Fetching patient current document: patient value is null')
-        return DOCUMENT_DOES_NOT_EXIST
+        throw 'Fetching patient current document: patient value is null'
     }
     if (patient.getName() == null) {
         log('Fetching patient current document: patient not created(name does not exist)')
-        return DOCUMENT_DOES_NOT_EXIST
+        throw 'Fetching patient current document: patient not created(name does not exist)'
     }
     if (patient.getBedId() == null) {
         log('Fetching patient current document: patient not created(name does not exist)')
-        return DOCUMENT_DOES_NOT_EXIST
+        throw 'Fetching patient current document: patient not created(name does not exist)'
     }
     if (patient.getId() == null) {
         log('Fetching patient current document: patient not created(id does not exist)')
-        return DOCUMENT_DOES_NOT_EXIST
+        throw 'Fetching patient current document: patient not created(id does not exist)'
     }
 
     const docList = new DocumentLinkedList(patient)
@@ -130,9 +130,9 @@ async function getPatientCurrentDocument(patient) {
 
     try {
         currentDoc = await docList.getCurrentDocument()
-    } catch(e) {
+    } catch (e) {
         log(e)
-        return DOCUMENT_DOES_NOT_EXIST
+        throw e
     }
 
     log('Successfully fetched document')
@@ -141,9 +141,9 @@ async function getPatientCurrentDocument(patient) {
 
 async function getPatientCurrentDocById(id) {
 
-    if(id == null) {
+    if (id == null) {
         log('Fetching patient current document by id: id value is null')
-        return
+        throw 'Fetching patient current document by id: id value is null'
     }
 
     const patient = await patientController.getPatientById(id)
@@ -154,19 +154,19 @@ async function getPatientNextDocument(patient) {
 
     if (patient == null) {
         log('Fetching patient next document: patient value is null')
-        return DOCUMENT_DOES_NOT_EXIST
+        throw 'Fetching patient next document: patient value is null'
     }
     if (patient.getName() == null) {
         log('Fetching patient next document: patient not created(name does not exist)')
-        return DOCUMENT_DOES_NOT_EXIST
+        throw 'Fetching patient next document: patient not created(name does not exist)'
     }
     if (patient.getBedId() == null) {
         log('Fetching patient next document: patient not created(name does not exist)')
-        return DOCUMENT_DOES_NOT_EXIST
+        throw 'Fetching patient next document: patient not created(name does not exist)'
     }
     if (patient.getId() == null) {
         log('Fetching patient next document: patient not created(id does not exist)')
-        return DOCUMENT_DOES_NOT_EXIST
+        throw 'Fetching patient next document: patient not created(id does not exist)'
     }
 
     const docList = new DocumentLinkedList(patient)
@@ -174,9 +174,9 @@ async function getPatientNextDocument(patient) {
 
     try {
         nextDoc = await docList.getNextDocument()
-    } catch(e) {
+    } catch (e) {
         log(e)
-        return DOCUMENT_DOES_NOT_EXIST
+        throw e
     }
 
     log('Successfully fetched document')
@@ -185,9 +185,9 @@ async function getPatientNextDocument(patient) {
 
 async function getPatientNextDocById(id) {
 
-    if(id == null) {
+    if (id == null) {
         log('Fetching patient next document by id: id value is null')
-        return
+        throw 'Fetching patient next document by id: id value is null'
     }
 
     const patient = await patientController.getPatientById(id)
@@ -198,19 +198,19 @@ async function getPatientPrevDocument(patient) {
 
     if (patient == null) {
         log('Fetching patient previous document: patient value is null')
-        return DOCUMENT_DOES_NOT_EXIST
+        throw 'Fetching patient previous document: patient value is null'
     }
     if (patient.getName() == null) {
         log('Fetching patient previous document: patient not created(name does not exist)')
-        return DOCUMENT_DOES_NOT_EXIST
+        throw 'Fetching patient previous document: patient not created(name does not exist)'
     }
     if (patient.getBedId() == null) {
         log('Fetching patient previous document: patient not created(name does not exist)')
-        return DOCUMENT_DOES_NOT_EXIST
+        throw 'Fetching patient previous document: patient not created(name does not exist)'
     }
     if (patient.getId() == null) {
         log('Fetching patient previous document: patient not created(id does not exist)')
-        return DOCUMENT_DOES_NOT_EXIST
+        throw 'Fetching patient previous document: patient not created(id does not exist)'
     }
 
     const docList = new DocumentLinkedList(patient)
@@ -218,9 +218,9 @@ async function getPatientPrevDocument(patient) {
 
     try {
         prevDoc = await docList.getPrevDocument()
-    } catch(e) {
+    } catch (e) {
         log(e)
-        return DOCUMENT_DOES_NOT_EXIST
+        throw e
     }
 
     log('Successfully fetched document')
@@ -229,9 +229,9 @@ async function getPatientPrevDocument(patient) {
 
 async function getPatientPrevDocById(id) {
 
-    if(id == null) {
+    if (id == null) {
         log('Fetching patient previoud document by id: id value is null')
-        return
+        throw 'Fetching patient previoud document by id: id value is null'
     }
 
     const patient = await patientController.getPatientById(id)
@@ -239,11 +239,6 @@ async function getPatientPrevDocById(id) {
 }
 
 module.exports = {
-    addDocumentToPatient,
-    updatePatientCurrentDocument,
-    getPatientCurrentDocument,
-    getPatientNextDocument,
-    getPatientPrevDocument,
     addDocToPatientById,
     updatePatientCurrentDocById,
     getPatientCurrentDocById,
