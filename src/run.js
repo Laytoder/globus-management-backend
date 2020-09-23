@@ -1,8 +1,7 @@
 const { app } = require('./server')
 const db = require('./database/db')
 const log = require('debug')('app:run')
-const patientController = require('./controllers/patient')
-const docCotroller = require('./controllers/documentLinkedList')
+const { test } = require('../scripts/testScript')
 
 async function run() {
     //start the server
@@ -12,6 +11,8 @@ async function run() {
     })
     //sync to database
     await db.sync()
+
+    await test()
 }
 
 run()

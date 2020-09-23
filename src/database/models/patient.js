@@ -41,10 +41,6 @@ class Patient {
         return this._patientInfoJson.name
     }
 
-    getBedId() {
-        return this._patientInfoJson.bedId
-    }
-
     getId() {
         return this._patientInfoJson._id
     }

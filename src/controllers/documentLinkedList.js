@@ -14,10 +14,6 @@ async function addDocumentToPatient(patient, doc) {
         log('Adding document to patient: patient not created(name does not exist)')
         throw 'Adding document to patient: patient not created(name does not exist)'
     }
-    if (patient.getBedId() == null) {
-        log('Adding document to patient: patient not created(name does not exist)')
-        throw 'Adding document to patient: patient not created(name does not exist)'
-    }
     if (patient.getId() == null) {
         log('Adding document to patient: patient not created(id does not exist)')
         throw 'Adding document to patient: patient not created(id does not exist)'
@@ -65,10 +61,6 @@ async function updatePatientCurrentDocument(patient, change) {
         log('Updating Patient Current Document: patient not created(name does not exist)')
         throw 'Updating Patient Current Document: patient not created(name does not exist)'
     }
-    if (patient.getBedId() == null) {
-        log('Updating Patient Current Document: patient not created(name does not exist)')
-        throw 'Updating Patient Current Document: patient not created(name does not exist)'
-    }
     if (patient.getId() == null) {
         log('Updating Patient Current Document: patient not created(id does not exist)')
         throw 'Updating Patient Current Document: patient not created(id does not exist)'
@@ -103,7 +95,7 @@ async function updatePatientCurrentDocById(id, change) {
     }
 
     const patient = await patientController.getPatientById(id)
-    await updatePatientCurrentDocument(patient, doc)
+    await updatePatientCurrentDocument(patient, change)
 }
 
 async function getPatientCurrentDocument(patient) {
@@ -113,10 +105,6 @@ async function getPatientCurrentDocument(patient) {
         throw 'Fetching patient current document: patient value is null'
     }
     if (patient.getName() == null) {
-        log('Fetching patient current document: patient not created(name does not exist)')
-        throw 'Fetching patient current document: patient not created(name does not exist)'
-    }
-    if (patient.getBedId() == null) {
         log('Fetching patient current document: patient not created(name does not exist)')
         throw 'Fetching patient current document: patient not created(name does not exist)'
     }
@@ -160,10 +148,6 @@ async function getPatientNextDocument(patient) {
         log('Fetching patient next document: patient not created(name does not exist)')
         throw 'Fetching patient next document: patient not created(name does not exist)'
     }
-    if (patient.getBedId() == null) {
-        log('Fetching patient next document: patient not created(name does not exist)')
-        throw 'Fetching patient next document: patient not created(name does not exist)'
-    }
     if (patient.getId() == null) {
         log('Fetching patient next document: patient not created(id does not exist)')
         throw 'Fetching patient next document: patient not created(id does not exist)'
@@ -201,10 +185,6 @@ async function getPatientPrevDocument(patient) {
         throw 'Fetching patient previous document: patient value is null'
     }
     if (patient.getName() == null) {
-        log('Fetching patient previous document: patient not created(name does not exist)')
-        throw 'Fetching patient previous document: patient not created(name does not exist)'
-    }
-    if (patient.getBedId() == null) {
         log('Fetching patient previous document: patient not created(name does not exist)')
         throw 'Fetching patient previous document: patient not created(name does not exist)'
     }

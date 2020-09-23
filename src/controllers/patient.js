@@ -12,10 +12,6 @@ async function createPatientAndGetId(patientInfoJson) {
         log('Creating patient: patient name does not exist')
         throw 'Creating patient: patient name does not exist'
     }
-    if (patientInfoJson.bedId == null) {
-        log('Creating patient: patient bed ID does not exist')
-        throw 'Creating patient: patient bed ID does not exist'
-    }
 
     const patient = new Patient(patientInfoJson)
 

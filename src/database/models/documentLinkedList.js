@@ -13,7 +13,15 @@ class DocumentLinkedList {
     constructor(patient) {
         this.patient = patient
         const COLLECTION_NAME = patient.getId()
+        this.incIdx = null
         DocumentLinkedList._collection = DocumentLinkedList._client.db(DATABASE_NAME).collection(COLLECTION_NAME)
+    }
+
+    async initIncrementIndex() {
+        const tail = this.patient.getTail()
+        const query = { _id: ObjectID(tail) }
+        const doc = await DocumentLinkedList._collection.find(query).next()
+        this.incIdx = doc.index
     }
 
     async add(doc) {
@@ -22,6 +30,9 @@ class DocumentLinkedList {
         const change = {}
         //case of adding the first document
         if (head == null) {
+            //as the first document is added init incIdx to 0
+            this.incIdx = 0
+            doc.index = this.incIdx
             this.initDocMetaData(doc)
             await this.createDocument(doc)
             this.patient.setHead(doc._id)
@@ -35,6 +46,7 @@ class DocumentLinkedList {
         else {
             this.initDocMetaData(doc)
             doc.prev = tail
+            await this.incrementDocIndex(doc)
             await this.createDocument(doc)
             await this.updateCurrentDocument({
                 next: doc._id
@@ -50,6 +62,13 @@ class DocumentLinkedList {
         const id = this.patient.getId()
         const filter = { _id: ObjectID(id) }
         await Patient.updatePatient(filter, change)
+    }
+
+    async incrementDocIndex(doc) {
+        if(this.incIdx == null)
+           await this.initIncrementIndex()
+        this.incIdx = this.incIdx + 1
+        doc.index = this.incIdx
     }
 
     async updateCurrentDocument(change) {
