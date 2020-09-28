@@ -12,7 +12,7 @@ async function run() {
     //sync to database
     await db.sync()
 
-    await test()
+    //await test()
 }
 
 run()

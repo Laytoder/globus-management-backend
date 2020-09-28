@@ -3,6 +3,7 @@ const log = require('debug')('app:controllers/documentLinkedList')
 
 const { DOCUMENT_DOES_NOT_EXIST } = require('../config/constants')
 const patientController = require('./patient')
+const { Patient } = require('../database/models/patient')
 
 async function addDocumentToPatient(patient, doc) {
 
@@ -31,8 +32,6 @@ async function addDocumentToPatient(patient, doc) {
         log(e)
         throw e
     }
-
-    log('Document added to patient')
 }
 
 async function addDocToPatientById(id, doc) {
@@ -47,7 +46,8 @@ async function addDocToPatientById(id, doc) {
         throw 'Adding document to patient by id: doc value is null'
     }
 
-    const patient = await patientController.getPatientById(id)
+    const patientJson = await patientController.getPatientById(id)
+    const patient = new Patient(patientJson)
     await addDocumentToPatient(patient, doc)
 }
 
@@ -94,7 +94,8 @@ async function updatePatientCurrentDocById(id, change) {
         throw 'Updating Patient Current Document by id: change value is null'
     }
 
-    const patient = await patientController.getPatientById(id)
+    const patientJson = await patientController.getPatientById(id)
+    const patient = new Patient(patientJson)
     await updatePatientCurrentDocument(patient, change)
 }
 
@@ -134,7 +135,8 @@ async function getPatientCurrentDocById(id) {
         throw 'Fetching patient current document by id: id value is null'
     }
 
-    const patient = await patientController.getPatientById(id)
+    const patientJson = await patientController.getPatientById(id)
+    const patient = new Patient(patientJson)
     return await getPatientCurrentDocument(patient)
 }
 
@@ -174,7 +176,8 @@ async function getPatientNextDocById(id) {
         throw 'Fetching patient next document by id: id value is null'
     }
 
-    const patient = await patientController.getPatientById(id)
+    const patientJson = await patientController.getPatientById(id)
+    const patient = new Patient(patientJson)
     return await getPatientNextDocument(patient)
 }
 
@@ -214,7 +217,8 @@ async function getPatientPrevDocById(id) {
         throw 'Fetching patient previoud document by id: id value is null'
     }
 
-    const patient = await patientController.getPatientById(id)
+    const patientJson = await patientController.getPatientById(id)
+    const patient = new Patient(patientJson)
     return await getPatientPrevDocument(patient)
 }
 

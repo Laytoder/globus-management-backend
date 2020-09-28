@@ -82,8 +82,7 @@ class Patient {
             const patientJson = await cursor.next()
             if (patientJson == null)
                 continue
-            const patient = new Patient(patientJson)
-            patients.add(patient)
+            patients.add(patientJson)
         }
         return patients.toArray()
     }

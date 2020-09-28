@@ -8,8 +8,8 @@ const {
 } = require('../../controllers/patient')
 
 route.post('/', async (req, res) => {
-    console.log('request occured')
     try {
+        console.log(req.body)
         const id = await createPatientAndGetId(req.body)
         res.status(200).send(id)
     } catch (e) {
