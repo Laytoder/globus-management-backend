@@ -1,4 +1,4 @@
-# GLOBUS HOSPITAL'S PATIENT RECORD MANAGEMENT SYSTEM BACKEND
+## GLOBUS HOSPITAL'S PATIENT RECORD MANAGEMENT SYSTEM BACKEND
 
 #### Technologies used for the project: <em>Node.js, Express.js, MongoDb</em>
 
@@ -21,3 +21,11 @@
 1. A Doubly ***Linked List Data Structure was implemented in MongoDb*** with all the associated important functions such as ***add, get, delete, update*** etc.
 
 2. Basic ***CRUD*** operations where implemented to manage ***Schema Based Patient's Personal Information records*** in a ***seperate Patient Collection***. These documents became the ***head nodes of the Linked List***.
+
+## Getting Started
+
+First, run the development server:
+
+```bash
+npm run dev
+```
