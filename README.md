@@ -24,8 +24,14 @@
 
 ## Getting Started
 
-First, run the development server:
+Use the following command to run the server in production mode:
 
 ```bash
-npm run dev
+npm run start
+```
+
+Use the following command to run the server in debug mode:
+
+```bash
+npm run start:debug
 ```
