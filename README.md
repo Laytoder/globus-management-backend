@@ -4,9 +4,9 @@
 
 ## Project Goals:
 
-1. This project was dedicated to digitalising the patient record management system of a local hospital in Kanpur, India.
+1. Various Local Hospitals in India still maintain their patient's records physically in seperate files. These records contain documents having important information about the patient's medical history.
 
-2. Various Local Hospitals in India still maintain their patient's records physically in seperate files. These records contain documents having important information about the patient's medical history.
+2. This project was dedicated to digitalising the patient record management system of a local hospital in Kanpur, India.
 
 ## Strategies Used:
 
