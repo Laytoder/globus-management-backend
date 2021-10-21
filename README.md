@@ -10,7 +10,7 @@
 
 ## Strategies Used:
 
-1. Sequence is an important aspect associated with these documents and therefore, this project used a ***Linked List based design to model the backend architechture***.
+1. Sequence is an important aspect associated with these documents and therefore, this project used a ***Linked List based design to model the document storage***.
 
 2. The project models a ***Doubly Linked List*** by creating one to one relationships between the documents of a ***no-sql database, MongoDb*** in this case.
 
