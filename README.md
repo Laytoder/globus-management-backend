@@ -20,7 +20,7 @@
 
 1. A Doubly ***Linked List Data Structure was implemented in MongoDb*** with all the associated important functions such as ***add, get, delete, update*** etc.
 
-2. Basic ***CRUD*** operations where implemented to manage ***Schema Based Patient's Personal Information records*** in a ***seperate Patient Collection***. These documents became the ***head nodes of the Linked List***.
+2. Basic ***CRUD*** operations where implemented to manage the ***Patient's Personal Information records*** in a ***seperate Patient Collection***. These documents became the ***head nodes of the Linked List***.
 
 ## Getting Started
 
